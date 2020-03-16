@@ -1,0 +1,8 @@
+version: '3'
+services:
+  web:
+    container_name: confluentpython
+    build: .
+    command: tail -f /dev/null
+    volumes:
+      - .:/code
