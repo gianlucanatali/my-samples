@@ -61,3 +61,7 @@ variable "bootstrap_vm_template_path" {
 variable "bootstrap_docker_template_path" { 
   description = "File path of the bootstrap_docker.tpl"
 }
+
+variable "docker_folder_path" { 
+  description = "Path for the docker folder to upload in the VM"
+}

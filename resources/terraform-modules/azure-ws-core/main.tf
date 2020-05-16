@@ -161,7 +161,7 @@ resource "null_resource" "vm_provisioners" {
 
   // Copy docker folder to the VM
   provisioner "file" {
-    source      = "../.docker_staging"
+    source      = var.docker_folder_path
     destination = ".workshop/docker"
 
     connection {
