@@ -1,0 +1,23 @@
+{ 
+    "demo_name": "<Demo prefix just lowcase chars>",
+    "ccloud": {
+        "bootstrap_servers": "<YOUR_CCLOUD_BOOTSTRAP_SERVER>",
+        "kafka_api_key": "<YOUR_CCLOUD_API_KEY>",
+        "kafka_api_secret": "<YOUR_CCLOUD_API_SECRET>",
+        "topics_to_create": "<TOPICS_TO_CREATE>",
+        "sr_endpoint": "<YOUR_CCLOUD_SCHEMA_REGISTRY_ENDPOINT>",
+        "sr_api_key" : "<YOUR_CCLOUD_SCHEMA_REGISTRY_API_KEY>",
+        "sr_api_secret": "<YOUR_CCLOUD_SCHEMA_REGISTRY_API_SECRET>"
+    },
+    "azure": {
+        "subscription_id": "<YOUR_AZURE_SUBSCRIPTION_ID>",
+        "client_id": "<YOUR_AZURE_CLIENT_ID>",
+        "client_secret": "<YOUR_AZURE_CLIENT_SECRET>",
+        "tenant_id": "<YOUR_AZURE_TENANT_ID>",
+        "location": "westeurope",
+        "vm": {
+            "password": "Confluent123!",
+            "type": "Standard_DS3_v2"
+        }
+    }
+}

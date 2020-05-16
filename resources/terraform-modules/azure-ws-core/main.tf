@@ -29,6 +29,9 @@ data "template_file" "bootstrap_docker" {
     ccloud_api_secret       = var.ccloud_api_secret
     ccloud_topics           = var.ccloud_topics
     feedback_form_url       = var.feedback_form_url
+    ccloud_sr_endpoint        = "${var.ccloud_sr_endpoint}"
+    ccloud_sr_api_key          = "${var.ccloud_sr_api_key}"
+    ccloud_sr_api_secret       = "${var.ccloud_sr_api_secret}"
   }
 }
 

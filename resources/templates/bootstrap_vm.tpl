@@ -36,25 +36,25 @@ sudo chmod +x /usr/local/bin/docker-compose
 echo "--- Create workshop staging directory ---"
 mkdir .workshop
 
-echo "echo \"\"" >> ~/.bashrc
-echo "echo \"\"" >> ~/.bashrc
-echo "echo \"\"" >> ~/.bashrc
-echo "echo \" __        __     _                                     \"" >> ~/.bashrc
-echo "echo \" \ \      / /___ | |  ___  ___   _ __ ___    ___        \"" >> ~/.bashrc
-echo "echo \"  \ \ /\ / // _ \| | / __|/ _ \ | '_ \\\` _ \  / _ \      \"" >> ~/.bashrc
-echo "echo \"   \ V  V /|  __/| || (__| (_) || | | | | ||  __/       \"" >> ~/.bashrc
-echo "echo \"    \_/\_/  \___||_| \___|\___/ |_| |_| |_| \___|       \"" >> ~/.bashrc
-echo "echo \"  _           _    _                                    \"" >> ~/.bashrc
-echo "echo \" | |_  ___   | |_ | |__    ___                          \"" >> ~/.bashrc
-echo "echo \" | __|/ _ \  | __|| '_ \  / _ \                         \"" >> ~/.bashrc
-echo "echo \" | |_| (_) | | |_ | | | ||  __/                         \"" >> ~/.bashrc
-echo "echo \"  \__|\___/   \__||_| |_| \___|                         \"" >> ~/.bashrc
-echo "echo \" __        __            _          _                   \"" >> ~/.bashrc
-echo "echo \" \ \      / /___   _ __ | | __ ___ | |__    ___   _ __  \"" >> ~/.bashrc
-echo "echo \"  \ \ /\ / // _ \ | '__|| |/ // __|| '_ \  / _ \ | '_ \ \"" >> ~/.bashrc
-echo "echo \"   \ V  V /| (_) || |   |   < \__ \| | | || (_) || |_) |\"" >> ~/.bashrc
-echo "echo \"    \_/\_/  \___/ |_|   |_|\_\|___/|_| |_| \___/ | .__/ \"" >> ~/.bashrc
-echo "echo \"                                                 |_|    \"" >> ~/.bashrc
-echo "echo \"\"" >> ~/.bashrc
-echo "echo \"\"" >> ~/.bashrc
-echo "echo \"\"" >> ~/.bashrc
+# echo "echo \"\"" >> ~/.bashrc
+# echo "echo \"\"" >> ~/.bashrc
+# echo "echo \"\"" >> ~/.bashrc
+# echo "echo \" __        __     _                                     \"" >> ~/.bashrc
+# echo "echo \" \ \      / /___ | |  ___  ___   _ __ ___    ___        \"" >> ~/.bashrc
+# echo "echo \"  \ \ /\ / // _ \| | / __|/ _ \ | '_ \\\` _ \  / _ \      \"" >> ~/.bashrc
+# echo "echo \"   \ V  V /|  __/| || (__| (_) || | | | | ||  __/       \"" >> ~/.bashrc
+# echo "echo \"    \_/\_/  \___||_| \___|\___/ |_| |_| |_| \___|       \"" >> ~/.bashrc
+# echo "echo \"  _           _    _                                    \"" >> ~/.bashrc
+# echo "echo \" | |_  ___   | |_ | |__    ___                          \"" >> ~/.bashrc
+# echo "echo \" | __|/ _ \  | __|| '_ \  / _ \                         \"" >> ~/.bashrc
+# echo "echo \" | |_| (_) | | |_ | | | ||  __/                         \"" >> ~/.bashrc
+# echo "echo \"  \__|\___/   \__||_| |_| \___|                         \"" >> ~/.bashrc
+# echo "echo \" __        __            _          _                   \"" >> ~/.bashrc
+# echo "echo \" \ \      / /___   _ __ | | __ ___ | |__    ___   _ __  \"" >> ~/.bashrc
+# echo "echo \"  \ \ /\ / // _ \ | '__|| |/ // __|| '_ \  / _ \ | '_ \ \"" >> ~/.bashrc
+# echo "echo \"   \ V  V /| (_) || |   |   < \__ \| | | || (_) || |_) |\"" >> ~/.bashrc
+# echo "echo \"    \_/\_/  \___/ |_|   |_|\_\|___/|_| |_| \___/ | .__/ \"" >> ~/.bashrc
+# echo "echo \"                                                 |_|    \"" >> ~/.bashrc
+# echo "echo \"\"" >> ~/.bashrc
+# echo "echo \"\"" >> ~/.bashrc
+# echo "echo \"\"" >> ~/.bashrc

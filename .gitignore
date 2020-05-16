@@ -1,2 +1,11 @@
 demo_config.json
 zz_*.log
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfvars files
+*.tfvars
+
+**/.terraform/*
