@@ -30,12 +30,12 @@ echo "DC"=${dc} >> .env
 echo "CCLOUD_TOPICS"=${ccloud_topics} >> .env
 echo "CCLOUD_SR_ENDPOINT=${ccloud_sr_endpoint}" >> .env
 echo "CCLOUD_SR_API_KEY=${ccloud_sr_api_key}" >> .env
-echo "CCLOUD_SR_API_SECRET=${ccloud_sr_api_secret}" .env
+echo "CCLOUD_SR_API_SECRET=${ccloud_sr_api_secret}"  >>  .env
 echo "TAG=5.5.0" >> .env
 
 # select the DC correctly in the database simulator script and schema file.
 sed -i 's/dcxx/${dc}/g' ~/.workshop/docker/db_transaction_simulator/simulate_dbtrans.py
-sed -i 's/dcxx/${dc}/g' ~/.workshop/docker/mysql_schema.sql
+sed -i 's/dcxx/${dc}/g' ~/.workshop/docker/scripts/mysql_schema.sql
 
 # Generate html file for the hosted instructions
 cd ~/.workshop/docker/asciidoc

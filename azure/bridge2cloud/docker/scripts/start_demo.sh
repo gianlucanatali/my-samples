@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 wait-for-url() {
     echo "Testing $1"
     timeout -s TERM 500 bash -c \

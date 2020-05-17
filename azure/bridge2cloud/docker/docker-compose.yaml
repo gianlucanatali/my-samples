@@ -42,19 +42,6 @@ services:
     volumes:
       - ./mounts/data/kafka-data:/var/lib/kafka/data
 
-  schema-registry:
-    image: confluentinc/cp-schema-registry:${TAG}
-    hostname: schema-registry
-    container_name: schema-registry
-    depends_on:
-      - zookeeper
-      - broker
-    ports:
-      - "8081:8081"
-    environment:
-      SCHEMA_REGISTRY_HOST_NAME: schema-registry
-      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: "zookeeper:2181"
-
   kafka-connect-onprem:
     image: confluentinc/cp-kafka-connect:${TAG}
     container_name: kafka-connect-onprem
@@ -62,7 +49,6 @@ services:
     depends_on:
       - zookeeper
       - broker
-      - schema-registry
     ports:
       - 18083:18083
     healthcheck:
@@ -71,13 +57,18 @@ services:
       CONNECT_BOOTSTRAP_SERVERS: "broker:29092"
       CONNECT_REST_PORT: 18083
       CONNECT_GROUP_ID: kafka-connect-onprem
-      CONNECT_CONFIG_STORAGE_TOPIC: _connect-configs
-      CONNECT_OFFSET_STORAGE_TOPIC: _connect-offsets
-      CONNECT_STATUS_STORAGE_TOPIC: _connect-statuses
+      CONNECT_CONFIG_STORAGE_TOPIC: _onprem_connect-configs
+      CONNECT_OFFSET_STORAGE_TOPIC: _onprem_connect-offsets
+      CONNECT_STATUS_STORAGE_TOPIC: _onprem_connect-statuses
+      CONNECT_KAFKA_HEAP_OPTS: "-Xms256M -Xmx4G"
       CONNECT_KEY_CONVERTER: io.confluent.connect.avro.AvroConverter
-      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
+      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: ${CCLOUD_SR_ENDPOINT}
+      CONNECT_KEY_CONVERTER_BASIC_AUTH_CREDENTIALS_SOURCE: USER_INFO
+      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_BASIC_AUTH_USER_INFO: ${CCLOUD_SR_API_KEY}:${CCLOUD_SR_API_SECRET}
       CONNECT_VALUE_CONVERTER: io.confluent.connect.avro.AvroConverter
-      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
+      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: ${CCLOUD_SR_ENDPOINT}
+      CONNECT_VALUE_CONVERTER_BASIC_AUTH_CREDENTIALS_SOURCE: USER_INFO
+      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_BASIC_AUTH_USER_INFO: ${CCLOUD_SR_API_KEY}:${CCLOUD_SR_API_SECRET}
       CONNECT_INTERNAL_KEY_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
       CONNECT_INTERNAL_VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
       CONNECT_REST_ADVERTISED_HOST_NAME: "kafka-connect-onprem"
@@ -225,13 +216,13 @@ services:
       CONTROL_CENTER_KAFKA_CCLOUD_SASL_MECHANISM: PLAIN
       CONTROL_CENTER_KAFKA_CCLOUD_SASL_JAAS_CONFIG: org.apache.kafka.common.security.plain.PlainLoginModule required username="${CCLOUD_API_KEY}" password="${CCLOUD_API_SECRET}";
       CONTROL_CENTER_KAFKA_CCLOUD_SCHEMA_REGISTRY_URL: ${CCLOUD_SR_ENDPOINT}
-      CONTROL_CENTER_KAFKA_CCLOUD_BASIC_AUTH_CREDENTIALS_SOURCE: USER_INFO
+      CONTROL_CENTER_KAFKA_CCLOUD_SCHEMA_REGISTRY_BASIC_AUTH_CREDENTIALS_SOURCE: USER_INFO
       CONTROL_CENTER_KAFKA_CCLOUD_SCHEMA_REGISTRY_BASIC_AUTH_USER_INFO: ${CCLOUD_SR_API_KEY}:${CCLOUD_SR_API_SECRET}
-      CONTROL_CENTER_REST_AUTHENTICATION_METHOD: BASIC
-      CONTROL_CENTER_REST_AUTHENTICATION_REALM: c3
-      CONTROL_CENTER_REST_AUTHENTICATION_ROLES: Administrators,Restricted
-      CONTROL_CENTER_AUTH_RESTRICTED_ROLES: Restricted
-      CONTROL_CENTER_OPTS: "-Djava.security.auth.login.config=/tmp/c3/propertyfile.jaas"
+      # CONTROL_CENTER_REST_AUTHENTICATION_METHOD: BASIC
+      # CONTROL_CENTER_REST_AUTHENTICATION_REALM: c3
+      # CONTROL_CENTER_REST_AUTHENTICATION_ROLES: Administrators,Restricted
+      # CONTROL_CENTER_AUTH_RESTRICTED_ROLES: Restricted
+      # CONTROL_CENTER_OPTS: "-Djava.security.auth.login.config=/tmp/c3/propertyfile.jaas"
       CONFLUENT_METRICS_TOPIC_REPLICATION: 1
       PORT: 9021
     volumes:
@@ -329,7 +320,7 @@ services:
       - MYSQL_USER=mysqluser
       - MYSQL_PASSWORD=mysqlpw
     volumes:
-      - ./mysql_schema.sql:/docker-entrypoint-initdb.d/mysql_schema.sql
+      - ./scripts/mysql_schema.sql:/docker-entrypoint-initdb.d/mysql_schema.sql
     healthcheck:
       test: '/usr/bin/mysql --user=root --password=debezium --execute "SHOW DATABASES;"'
       interval: 5s
@@ -344,6 +335,7 @@ services:
     command: tail -f /dev/null
     build:
       context: ./db_transaction_simulator   
+
       
   rest-proxy:
     image: confluentinc/cp-kafka-rest:${TAG}

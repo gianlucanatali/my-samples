@@ -21,11 +21,11 @@ sudo groupadd docker
 sudo usermod -aG docker ${dc}
 sudo nohup dockerd >/dev/null 2>&1 &
 
-echo "--- Creating C3 auth files ---"
-mkdir /tmp/c3
-echo "${dc}: ${participant_password},Administrators" > /tmp/c3/login.properties
-echo "disallowed: no_access" >> /tmp/c3/login.properties
-echo 'c3 { org.eclipse.jetty.jaas.spi.PropertyFileLoginModule required file="/tmp/c3/login.properties"; };' > /tmp/c3/propertyfile.jaas
+# echo "--- Creating C3 auth files ---"
+# mkdir /tmp/c3
+# echo "${dc}: ${participant_password},Administrators" > /tmp/c3/login.properties
+# echo "disallowed: no_access" >> /tmp/c3/login.properties
+# echo 'c3 { org.eclipse.jetty.jaas.spi.PropertyFileLoginModule required file="/tmp/c3/login.properties"; };' > /tmp/c3/propertyfile.jaas
 
 
 echo "--- Installing Docker Compose ---"
