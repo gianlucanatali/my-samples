@@ -49,7 +49,7 @@ export VAR_CCLOUD_SR_ENDPOINT="${ccloud_sr_endpoint}"
 export VAR_CCLOUD_SR_API_KEY="${ccloud_sr_api_key}"
 export VAR_CCLOUD_SR_API_SECRET="${ccloud_sr_api_secret}"
 
-#source scripts/start_demo.sh
+source scripts/start_demo.sh
 
 # cd ~/.workshop/docker/extensions
 # for extension in */ ; do
