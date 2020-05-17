@@ -172,9 +172,9 @@ wait-for-schema dc01_suppliers_rekeyed
 
 docker-compose exec -T ksql-cli ksql http://ksql-server-ccloud:8088 << EOF
 SET 'auto.offset.reset' = 'earliest';
-CREATE TABLE customers_tbl WITH (KAFKA_TOPIC='dc01_customers_rekeyed', VALUE_FORMAT='AVRO', key='id');
-CREATE TABLE products_tbl WITH (KAFKA_TOPIC='dc01_products_rekeyed', VALUE_FORMAT='AVRO', key='id');
-CREATE TABLE suppliers_tbl WITH (KAFKA_TOPIC='dc01_suppliers_rekeyed', VALUE_FORMAT='AVRO', key='id');
+CREATE TABLE customers_tbl (ROWKEY INTEGER KEY) WITH (KAFKA_TOPIC='dc01_customers_rekeyed', VALUE_FORMAT='AVRO', key='id');
+CREATE TABLE products_tbl (ROWKEY INTEGER KEY) WITH (KAFKA_TOPIC='dc01_products_rekeyed', VALUE_FORMAT='AVRO', key='id');
+CREATE TABLE suppliers_tbl (ROWKEY INTEGER KEY) WITH (KAFKA_TOPIC='dc01_suppliers_rekeyed', VALUE_FORMAT='AVRO', key='id');
 EOF
 
 docker-compose exec -T ksql-cli ksql http://ksql-server-ccloud:8088 << EOF
