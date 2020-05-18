@@ -22,11 +22,11 @@ Confluent Platform can be the lingua franca that lets all these different infras
 [quote]
 ____
 
-In this demo we'll guide you in a data journey, starting from Data generated on premise in a traditional database, collecting CDC events on premise and then bridge this data to Confluent Cloud on {cloudprovider}. We'll then use KSQL to manipulate and enrich the data and replicate it across the various clouds. Connectors are use to both sink existing data and source data natively created in the cloud eco-systems to enrich the data already in Confluent Cloud. In the end new valuable data will arrive back to the on Premise to make sure even legacy applications can reap the benefits of the cloud eco-systems. 
+In this demo we'll guide you in a data journey, starting from Data generated on premise in a traditional database, collecting CDC events on premise and then bridge this data to Confluent Cloud on {cloudprovider}. We'll then use KSQL to manipulate and enrich the data. Connectors are use to both sink existing data and source data natively created in the cloud eco-systems to enrich the data already in Confluent Cloud. In the end new valuable data will arrive back to the on Premise to make sure even legacy applications can reap the benefits of the cloud eco-systems. 
 
 The possibilities are almost endless!
 
-KSksqlDBQL is the streaming engine for Apache Kafka using a sql-like lanaugage making it easy for non-developers and developers alike to quickly develop powerful streaming applications.
+ksqlDB is the streaming engine for Apache Kafka using a sql-like lanaugage making it easy for non-developers and developers alike to quickly develop powerful streaming applications.
 
 
 ____
